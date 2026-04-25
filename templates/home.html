@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">FWI Prediction Form</h1>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post" class="mt-4">
+
+            <input type="text" name="Temperature" placeholder="Temperature" class="form-control mb-2" required>
+            <input type="text" name="RH" placeholder="RH" class="form-control mb-2" required>
+            <input type="text" name="Ws" placeholder="Ws" class="form-control mb-2" required>
+            <input type="text" name="Rain" placeholder="Rain" class="form-control mb-2" required>
+            <input type="text" name="FFMC" placeholder="FFMC" class="form-control mb-2" required>
+            <input type="text" name="DMC" placeholder="DMC" class="form-control mb-2" required>
+            <input type="text" name="ISI" placeholder="ISI" class="form-control mb-2" required>
+            <input type="text" name="Classes" placeholder="Classes" class="form-control mb-2" required>
+            <input type="text" name="Region" placeholder="Region" class="form-control mb-3" required>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Predict
+            </button>
+        </form>
+
+        <!-- Result -->
+        {% if result is not none %}
+        <div class="alert alert-success mt-4 text-center">
+            <h4>THE FWI prediction is: {{ result }}</h4>
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-3">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
